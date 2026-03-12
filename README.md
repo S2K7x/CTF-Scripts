@@ -38,7 +38,3 @@ git clone https://github.com/S2K7x/Cyber-Utils.git
 ---
 
 *Last Updated: March 2026*
-
----
-
-Would you like me to add a **"License"** section (like MIT) or a specific **"Tech Stack"** section to highlight your use of TypeScript and Python?
