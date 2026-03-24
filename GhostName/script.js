@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             platform: document.getElementById('config-platform').value,
             minLength: parseInt(document.getElementById('config-min').value) || 0,
             maxLengthOverride: parseInt(document.getElementById('config-max').value) || 0,
-            forbiddenChars: document.getElementById('config-forbidden').value.trim(),
+            forbiddenChars: document.getElementById('config-forbidden') ? document.getElementById('config-forbidden').value.trim() : "",
             requireNumber: document.getElementById('config-req-num').checked,
             requireSpecial: document.getElementById('config-req-spec').checked,
             noiseLevel: 2 // hardcoded higher noise for variety
